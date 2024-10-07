@@ -36,10 +36,6 @@ android {
 }
 
 dependencies {
-
-    implementation(libs.coroutines)
-    implementation(libs.lifecycle.livedata)
-    implementation(libs.lifecycle.viewmodel)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -48,4 +44,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(libs.coroutines)
+
+    implementation(libs.lifecycle.livedata)
+    implementation(libs.lifecycle.viewmodel)
+
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
 }
