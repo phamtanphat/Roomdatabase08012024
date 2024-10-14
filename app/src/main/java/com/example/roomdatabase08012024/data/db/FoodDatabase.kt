@@ -8,19 +8,20 @@ import com.example.roomdatabase08012024.data.db.entity.FoodEntity
 
 @Database(entities = [FoodEntity::class], version = 1)
 abstract class FoodDatabase : RoomDatabase() {
-    private var instance: FoodDatabase? = null
-    abstract fun foodDao()
+    abstract fun foodDao(): FoodDao
 
-    fun getDb(context: Context): FoodDatabase? {
-        if (instance == null) {
-            return Room.databaseBuilder(
-                context,
-                this::class.java,
-                "food-database"
-            )
-                .build()
+    companion object {
+        private var instance: FoodDatabase? = null
+        fun getDb(context: Context): FoodDatabase? {
+            if (instance == null) {
+                instance = Room.databaseBuilder(
+                    context,
+                    FoodDatabase::class.java,
+                    "food-database"
+                ).build()
+            }
+
+            return instance
         }
-
-        return instance
     }
 }
